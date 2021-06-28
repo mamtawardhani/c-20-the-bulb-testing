@@ -31,6 +31,13 @@ function draw() {
   // stick.x=mouseX
   // stick.y = mouseY
 
+  if(keyDown("a")){
+    wire1.y-=2
+  }
+  else if(keyDown("b")){
+    wire2.y-=2
+  }
+
   textSize(20)
   fill("red")
   text("Test the Bulb!", 350,30)
@@ -59,11 +66,4 @@ function draw() {
   drawSprites();
 }
 
-function keyPressed(){
-  if(keyDown("a")){
-    wire1.velocityY=-2
-  }
-  else if(keyDown("b")){
-    wire2.velocityY=-2
-  }
-}
+
