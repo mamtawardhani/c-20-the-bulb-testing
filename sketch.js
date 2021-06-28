@@ -19,11 +19,9 @@ function setup() {
 // stick = createSprite(100, 100, 100, 20)
 // stick.shapeColor="brown"
 
-wire1 = createSprite(250,550,10,100)
+wire1 = createSprite(400,550,10,100)
 wire1.shapeColor="red"
 
-wire2 = createSprite(550,550,10,100)
-wire2.shapeColor="red"
 }
 
 function draw() {
@@ -31,36 +29,48 @@ function draw() {
   // stick.x=mouseX
   // stick.y = mouseY
 
-  if(keyDown("a")){
+  if(wire1.y < 600 && wire1.y>380){
+  if(keyDown("up")){
     wire1.y-=2
   }
-  else if(keyDown("b")){
-    wire2.y-=2
+  if(keyDown("down")){
+    wire1.y+=2
   }
+  if(keyDown("right")){
+    wire1.x+=2
+  }
+  if(keyDown("left")){
+    wire1.x-=2
+  }
+}
 
   textSize(20)
   fill("red")
   text("Test the Bulb!", 350,30)
-    if(wire1.y - bulb1.y < (wire1.height + bulb1.height)/2
-      &&bulb1.y - wire1.y < (wire1.height + bulb1.height)/2){
+    
+  
+      if(wire1.y - bulb1.y < (wire1.height + bulb1.height)/2
+      && bulb1.y - wire1.y < (wire1.height + bulb1.height)/2){
       bulb1.changeImage("b2", b2)
-      wire1.velocityY=0
+      
     }
 
     else{
       bulb1.changeImage("b1", b1)
     }
 
-    if(wire2.y - bulb2.y < (wire2.height + bulb2.height)/2
-    &&bulb2.y - wire2.y < (wire2.height + bulb2.height)/2){
+    
+    if(wire1.y - bulb2.y < (wire1.height + bulb2.height)/2
+    &&bulb2.y - wire1.y < (wire1.height + bulb2.height)/2){
       bulb2.changeImage("b2", b2)
-      wire2.velocityY=0
+     
   }
 
   else{
     bulb2.changeImage("b1", b1)
   }
 
+  
 
 
   drawSprites();
