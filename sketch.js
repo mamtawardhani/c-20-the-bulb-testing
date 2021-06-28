@@ -1,11 +1,12 @@
 var bulb1;
+var wire1, wire2;
 
 function preload(){
   b1= loadImage("images/bulb1.png")
   b2 = loadImage("images/bulb2.png")
 }
 function setup() {
-  createCanvas(800,400);
+  createCanvas(800,600);
  bulb1 = createSprite(250, 200, 50, 50);
  bulb1.addImage("b1", b1)
  bulb1.addImage("b2", b2)
@@ -15,31 +16,38 @@ function setup() {
  bulb2.addImage("b1", b1)
  bulb2.addImage("b2", b2)
 
- stick = createSprite(100, 100, 100, 20)
-stick.shapeColor="brown"
+// stick = createSprite(100, 100, 100, 20)
+// stick.shapeColor="brown"
+
+wire1 = createSprite(250,550,10,100)
+wire1.shapeColor="red"
+
+wire2 = createSprite(550,550,10,100)
+wire2.shapeColor="red"
 }
 
 function draw() {
-  background(0);  
-  stick.x=mouseX
-  stick.y = mouseY
+  background("cyan");  
+  // stick.x=mouseX
+  // stick.y = mouseY
 
-    if(stick.x - bulb1.x < (stick.width + bulb1.width)/2
-      &&bulb1.x - stick.x < (stick.width + bulb1.width)/2
-      &&stick.y - bulb1.y < (stick.height + bulb1.height)/2
-      &&bulb1.y - stick.y < (stick.height + bulb1.height)/2){
-        bulb1.changeImage("b2", b2)
+  textSize(20)
+  fill("red")
+  text("Test the Bulb!", 350,30)
+    if(wire1.y - bulb1.y < (wire1.height + bulb1.height)/2
+      &&bulb1.y - wire1.y < (wire1.height + bulb1.height)/2){
+      bulb1.changeImage("b2", b2)
+      wire1.velocityY=0
     }
 
     else{
       bulb1.changeImage("b1", b1)
     }
 
-    if(stick.x - bulb2.x < (stick.width + bulb2.width)/2
-    &&bulb2.x - stick.x < (stick.width + bulb2.width)/2
-    &&stick.y - bulb2.y < (stick.height + bulb2.height)/2
-    &&bulb2.y - stick.y < (stick.height + bulb2.height)/2){
+    if(wire2.y - bulb2.y < (wire2.height + bulb2.height)/2
+    &&bulb2.y - wire2.y < (wire2.height + bulb2.height)/2){
       bulb2.changeImage("b2", b2)
+      wire2.velocityY=0
   }
 
   else{
@@ -49,4 +57,13 @@ function draw() {
 
 
   drawSprites();
+}
+
+function keyPressed(){
+  if(keyDown("a")){
+    wire1.velocityY=-2
+  }
+  else if(keyDown("b")){
+    wire2.velocityY=-2
+  }
 }
