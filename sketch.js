@@ -1,49 +1,47 @@
-var bulb1;
-var wire1, wire2;
+var bulb1,bulb2;
+var wire;
 
 function preload(){
-  b1= loadImage("images/bulb1.png")
-  b2 = loadImage("images/bulb2.png")
+  bulb1Image= loadImage("images/bulb1.png")
+  bulb2Image = loadImage("images/bulb2.png")
+  cableImage = loadImage("images/Cablewire.png")
 }
 function setup() {
   createCanvas(800,400);
  bulb1 = createSprite(250, 200, 50, 50);
- bulb1.addImage("b1", b1)
- bulb1.addImage("b2", b2)
+ bulb1.addImage("b1", bulb1Image)
+ bulb1.addImage("b2", bulb2Image)
 
 
  bulb2 = createSprite(550, 200, 50, 50);
- bulb2.addImage("b1", b1)
- bulb2.addImage("b2", b2)
+ bulb2.addImage("b1", bulb1Image)
+ bulb2.addImage("b2", bulb2Image)
 
-// stick = createSprite(100, 100, 100, 20)
-// stick.shapeColor="brown"
-
-wire1 = createSprite(400,400,10,100)
-wire1.shapeColor="red"
+ wire = createSprite(400,400,10,100)
+// wire.shapeColor="red"
+ wire.addImage("wire", cableImage)
+wire.scale=0.05
 
 }
 
 function draw() {
   background("cyan");  
-  // stick.x=mouseX
-  // stick.y = mouseY
 
-  if(wire1.y < 600 && wire1.y>380){
+  if(wire.y < 600 && wire.y>380){
   if(keyDown("up")){
-    wire1.y-=2
+    wire.y-=2
   }
   if(keyDown("down")){
-    wire1.y+=2
+    wire.y+=2
   }
 
 }
 
 if(keyDown("right")){
-  wire1.x+=2
+  wire.x+=2
 }
 if(keyDown("left")){
-  wire1.x-=2
+  wire.x-=2
 }
 
   textSize(20)
@@ -51,29 +49,29 @@ if(keyDown("left")){
   text("Test the Bulb!", 350,30)
     
   
-      if(wire1.y - bulb1.y < (wire1.height + bulb1.height)/2
-      && bulb1.y - wire1.y < (wire1.height + bulb1.height)/2 &&
-      wire1.x - bulb1.x < (wire1.width + bulb1.width)/2
-      && bulb1.x - wire1.x < (wire1.width + bulb1.width)/2){
-      bulb1.changeImage("b2", b2)
+      if(wire.y - bulb1.y < (wire.height + bulb1.height)/2
+      && bulb1.y - wire.y < (wire.height + bulb1.height)/2 &&
+      wire.x - bulb1.x < (wire.width + bulb1.width)/2
+      && bulb1.x - wire.x < (wire.width + bulb1.width)/2){
+      bulb1.changeImage("b2", bulb2Image)
       
     } //true
 
     else{
-      bulb1.changeImage("b1", b1)
+      bulb1.changeImage("b1", bulb1Image)
     }
 
     
-    if(wire1.y - bulb2.y < (wire1.height + bulb2.height)/2
-    &&bulb2.y - wire1.y < (wire1.height + bulb2.height)/2 &&
-    wire1.x - bulb2.x < (wire1.width + bulb2.width)/2
-    && bulb2.x - wire1.x < (wire1.width + bulb2.width)/2){
-      bulb2.changeImage("b2", b2)
+    if(wire.y - bulb2.y < (wire.height + bulb2.height)/2
+    &&bulb2.y - wire.y < (wire.height + bulb2.height)/2 &&
+    wire.x - bulb2.x < (wire.width + bulb2.width)/2
+    && bulb2.x - wire.x < (wire.width + bulb2.width)/2){
+      bulb2.changeImage("b2", bulb2Image)
      
   } 
 
   else{
-    bulb2.changeImage("b1", b1)
+    bulb2.changeImage("b1", bulb1Image)
   }
 
   
@@ -81,9 +79,3 @@ if(keyDown("left")){
 
   drawSprites();
 }
-
-function collis(p1,p2){
-
-}
-
-
