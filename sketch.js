@@ -6,7 +6,7 @@ function preload(){
   b2 = loadImage("images/bulb2.png")
 }
 function setup() {
-  createCanvas(800,600);
+  createCanvas(800,400);
  bulb1 = createSprite(250, 200, 50, 50);
  bulb1.addImage("b1", b1)
  bulb1.addImage("b2", b2)
@@ -19,7 +19,7 @@ function setup() {
 // stick = createSprite(100, 100, 100, 20)
 // stick.shapeColor="brown"
 
-wire1 = createSprite(400,550,10,100)
+wire1 = createSprite(400,400,10,100)
 wire1.shapeColor="red"
 
 }
@@ -36,12 +36,14 @@ function draw() {
   if(keyDown("down")){
     wire1.y+=2
   }
-  if(keyDown("right")){
-    wire1.x+=2
-  }
-  if(keyDown("left")){
-    wire1.x-=2
-  }
+
+}
+
+if(keyDown("right")){
+  wire1.x+=2
+}
+if(keyDown("left")){
+  wire1.x-=2
 }
 
   textSize(20)
@@ -50,10 +52,12 @@ function draw() {
     
   
       if(wire1.y - bulb1.y < (wire1.height + bulb1.height)/2
-      && bulb1.y - wire1.y < (wire1.height + bulb1.height)/2){
+      && bulb1.y - wire1.y < (wire1.height + bulb1.height)/2 &&
+      wire1.x - bulb1.x < (wire1.width + bulb1.width)/2
+      && bulb1.x - wire1.x < (wire1.width + bulb1.width)/2){
       bulb1.changeImage("b2", b2)
       
-    }
+    } //true
 
     else{
       bulb1.changeImage("b1", b1)
@@ -61,10 +65,12 @@ function draw() {
 
     
     if(wire1.y - bulb2.y < (wire1.height + bulb2.height)/2
-    &&bulb2.y - wire1.y < (wire1.height + bulb2.height)/2){
+    &&bulb2.y - wire1.y < (wire1.height + bulb2.height)/2 &&
+    wire1.x - bulb2.x < (wire1.width + bulb2.width)/2
+    && bulb2.x - wire1.x < (wire1.width + bulb2.width)/2){
       bulb2.changeImage("b2", b2)
      
-  }
+  } 
 
   else{
     bulb2.changeImage("b1", b1)
@@ -74,6 +80,10 @@ function draw() {
 
 
   drawSprites();
+}
+
+function collis(p1,p2){
+
 }
 
 
