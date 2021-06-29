@@ -4,7 +4,7 @@ var wire;
 function preload(){
   bulb1Image= loadImage("images/bulb1.png")
   bulb2Image = loadImage("images/bulb2.png")
-  cableImage = loadImage("images/Cablewire.png")
+  cableImage = loadImage("images/wire.png")
 }
 function setup() {
   createCanvas(800,400);
@@ -17,10 +17,10 @@ function setup() {
  bulb2.addImage("b1", bulb1Image)
  bulb2.addImage("b2", bulb2Image)
 
- wire = createSprite(400,400,10,100)
+ wire = createSprite(400,380,10,100)
 // wire.shapeColor="red"
  wire.addImage("wire", cableImage)
-wire.scale=0.05
+wire.scale=0.5
 
 }
 
